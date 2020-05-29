@@ -13,10 +13,11 @@ class CreateActorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('actor', function (Blueprint $table) {
-            $table->increments('actor_id');
+        Schema::create('actors', function (Blueprint $table) {
+            $table->smallIncrements('actor_id');
             $table->string('first_name', 45);
-            $table->string('last_name', 45);
+            $table->string('last_name', 45)->index();
+            $table->timestamp('last_update');
             $table->timestamps();
         });
     }
