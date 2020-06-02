@@ -12,8 +12,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/actors',"ActorsController@index");
+Route::resource('actors', 'ActorsController');
+Route::get('/glumci',"ActorsController@index");
 
 Route::get('/', function () {
     return view('welcome');
