@@ -77,26 +77,12 @@ class ActorsController extends Controller
         //TODO Validacija na nacin Laravel 7
      $validatedData = $request->validate([
         'actor_id'    => 'required|numeric',
-        'first_name'  => 'required|string|max:5',
+        'first_name'  => 'required|string|max:45',
         'last_name'   => 'required|string|max:45',
     ]);
      //$validated = $request->validated();
      
-     
-//        $validator = Validator::make($request->all(), [
-//              'trgovina_id' => 'required|numeric',
-//              'country'     => 'required|string|max:191',
-//              'city'        => 'required|string|max:191',
-//              'pbr'         => 'required|string|max:191',
-//              'street'      => 'required|string|max:191',
-//        ]);
-//        if ($validator->fails()) {
-//            Session::flash('error', 'Greška, molim ispravno popuniti polja!');
-//
-//            return redirect('adresa/'.$trgovine->id.'/edit')
-//                    ->withErrors($validator)
-//                    ->withInput();
-//        } 
+
      if (!$request->validated()) {
             Session::flash('error', 'Greška, molim ispravno popuniti polja!');
 

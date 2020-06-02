@@ -31,7 +31,7 @@
         <input maxlength="45" type="text" name="first_name" required="true"
                value="{{ $actor->first_name }}"><br>
 
-        <label for="city"> Last name:</label><br>
+        <label for="last_name"> Last name:</label><br>
         <input maxlength="45" type="text" name="last_name" required="true"
                value="{{ $actor->last_name }}"><br>
     </div>

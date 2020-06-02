@@ -17,7 +17,7 @@
 <div class="border border-info rounded-md">
     <table>
         <thead><tr><th>{{$actor->first_name}} {{$actor->last_name}}</th>
-            <th><i class="far fa-user big"></i></th></tr></thead>
+            </tr><tr><th><i class="fas fa-user-tie"></i></th></tr></thead>
         <tbody>
             <tr><td>
                     <img src="{{asset('storage/actor.jpg')}}" alt=""/></td></tr>  

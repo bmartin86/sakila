@@ -26,7 +26,7 @@
     <a href='{{url("/actors/{$g->actor_id}/edit")}}'>
         <span class="label label-info">Edit</span></a>
     
-    &nbsp;&nbsp;<a href='{{url("/actors/{$g->actor_id}")}}'> {{$g->first_name }}</a>
+    &nbsp;&nbsp;<a href='{{url("/actors/{$g->actor_id}")}}'> {{$g->first_name }} {{$g->last_name}}</a>
   </li>
 
   @endforeach
