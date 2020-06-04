@@ -1,15 +1,26 @@
 @extends('layouts.app')
-@section('title', 'Svi predmeti')
+@section('title', 'Svi glumci')
 @section('content_header')
-<h1>Predmeti</h1>
+<h1>Glumci</h1>
 @stop
 
 
 @section('content')
- @if (Session::has('message'))
-	<div class="alert alert-success">{{ Session::get('message') }}
-  </div>
-@endif 
+
+@if ($errors->any())
+<div class="alert alert-danger">
+    <ul>
+        @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
+
+<!-- Laravel > 7.* -->
+@error('success') 
+<div class="alert alert-success">{{ $success }}</div>
+@enderror
 
 <h3>Lista glumaca:</h3>
 {{--
@@ -18,20 +29,30 @@
 --}}
 
 {{ $glumci->links() }}
-<ol start="{{ $glumci->firstItem() }}">
-  @foreach ($glumci as $g)
+<ol start="{{ $glumci->firstItem() }}"> 
+    @foreach ($glumci as $g)
 
 
-  <li>
-    <a href='{{url("/actors/{$g->actor_id}/edit")}}'>
-        <span class="label label-info">Edit</span></a>
-    
-    &nbsp;&nbsp;<a href='{{url("/actors/{$g->actor_id}")}}'> {{$g->first_name }} {{$g->last_name}}</a>
-  </li>
+    <li>
+        <a href='{{url("/actors/{$g->actor_id}/edit")}}'>
+            <span class="label label-info">Edit</span></a>
+            
+        <form style="display:inline" name="actor_delete" action="{{url("/actors/{$g->actor_id}")}}" method="POST" enctype="multipart/form-data">
+            @method('delete')
+            @csrf
+            <button type="submit" class="btn btn-danger">
+                <i class="fa fa-trash" aria-hidden="true"></i>
+            </button>
+        </form>  
 
-  @endforeach
+        &nbsp;&nbsp;<a href='{{url("/actors/{$g->actor_id}")}}'> {{$g->first_name }} {{$g->last_name}}</a>
+    </li>
+
+    @endforeach
 </ol>
 {{ $glumci->links() }}
+<a href='{{route('actors.create')}}'>
+    <span class="label label-info">Dodaj novu glumicu/glumca</span></a>
 @endsection
 
 @section('css')

@@ -15,7 +15,7 @@ class ActorsController extends Controller
     
      public function create()
     {
-        //
+        return view ('actor.create');
     }
 
     /**
@@ -25,9 +25,17 @@ class ActorsController extends Controller
      *
      * @return Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Actor $actor)
     {
-        //
+        $validatedData = $request->validate([
+        'first_name'  => 'required|string|max:45|alpha',
+        'last_name'   => 'required|string|max:45|alpha',
+    ]);
+     $actor->first_name = $request->input('first_name');
+     $actor->last_name = $request->input('last_name');
+     $actor->save(); // sacuvaj u bazu podataka
+
+     return redirect()->route('actors.index')->with('success', 'Actor added!');
     }
 
     /**
@@ -75,45 +83,16 @@ class ActorsController extends Controller
     public function update(Request $request, Actor $actor)
     {
         //TODO Validacija na nacin Laravel 7
-     $validatedData = $request->validate([
+       $validatedData = $request->validate([
         'actor_id'    => 'required|numeric',
-        'first_name'  => 'required|string|max:45',
-        'last_name'   => 'required|string|max:45',
+        'first_name'  => 'required|string|max:45|alpha',
+        'last_name'   => 'required|string|max:45|alpha',
     ]);
-     //$validated = $request->validated();
-     
+     $actor->first_name = $request->input('first_name');
+     $actor->last_name = $request->input('last_name');
+     $actor->save(); // sacuvaj u bazu podataka
 
-     if (!$request->validated()) {
-            Session::flash('error', 'Greška, molim ispravno popuniti polja!');
-
-            return redirect('actors/'.$actor->actor_id.'/edit')
-                    ->withErrors($validatedData)
-                    ->withInput();
-     }
-        else {
-            // store
-            $adresa->trgovina_id = $request->input('trgovina_id');
-            $adresa->country = $request->input('country');
-            $adresa->city = $request->input('city');
-            $adresa->pbr = $request->input('pbr');
-            $adresa->phone = $request->input('phone');
-
-            // ako postoji slika uploadaj ju
-            try {
-                $imageExtension = $request->slika->getClientOriginalExtension();  // nastavak
-                $imageName = 'adresa-'.$adresa->id.'-'.now()->format('Y-m-d').'.'.$imageExtension; // ime slike
-                $adresa->slika = $imageName;  // ime slike u bazi
-                $request->slika->move(public_path(), $imageName); // kopiraj u /public
-            } catch (Exception $e) {
-                dd($e);
-            }
-
-            $adresa->save();
-            // redirect
-            Session::flash('message', 'Uspješno izmjenjena adresa!');
-
-            return redirect()->route('adresa.index');
-        }
+     return redirect()->route('actors.index');
     }
 
     /**
@@ -123,8 +102,9 @@ class ActorsController extends Controller
      *
      * @return Response
      */
-    public function destroy(Adresa $adresa)
+    public function destroy(Actor $actor)
     {
-        //
+         $actor->delete();
+        return redirect()->route('actors.index')->with('success', 'Actor deleted!');
     }
 }
