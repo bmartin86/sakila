@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Actor extends Model
 {
-    protected $table = 'actors';
+    protected $table = 'actor';
     protected $primaryKey = 'actor_id';
 
     

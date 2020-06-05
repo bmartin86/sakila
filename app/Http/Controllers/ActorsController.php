@@ -47,16 +47,6 @@ class ActorsController extends Controller
      */
     public function show(Actor $actor)
     {
-//http://sakila.test/actors/7
-        /*
-      #attributes: array:4 [▼
-    "actor_id" => 7
-    "first_name" => "GRACE"
-    "last_name" => "MOSTEL"
-    "last_update" => "2006-02-15 04:34:33"
-  ]
-         */
-
         return view('actor.show', ['actor' => $actor]);
     }
 

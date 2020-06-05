@@ -22,6 +22,12 @@
 <div class="alert alert-success">{{ $success }}</div>
 @enderror
 
+@if (session('status'))
+    <div class="alert alert-success">
+        {{ session('status') }}
+    </div>
+@endif
+
 <h3>Lista glumaca:</h3>
 {{--
 //print_r($glumci);
@@ -36,7 +42,7 @@
     <li>
         <a href='{{url("/actors/{$g->actor_id}/edit")}}'>
             <span class="label label-info">Edit</span></a>
-            
+   
         <form style="display:inline" name="actor_delete" action="{{url("/actors/{$g->actor_id}")}}" method="POST" enctype="multipart/form-data">
             @method('delete')
             @csrf

@@ -20,6 +20,12 @@
     <div class="alert alert-success">{{ $message }}</div>
 @enderror
 
+@if (session('status'))
+    <div class="alert alert-success">
+        {{ session('status') }}
+    </div>
+@endif
+
 <h3>Dodaj novu glumicu/glumca:</h3>
 
 
