@@ -94,7 +94,7 @@ class ActorsController extends Controller
      */
     public function destroy(Actor $actor)
     {
-         $actor->delete();
+        $actor->delete();
         return redirect()->route('actors.index')->with('success', 'Actor deleted!');
     }
 }

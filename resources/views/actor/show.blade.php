@@ -1,7 +1,7 @@
 @extends('layouts.app')
-@section('title', 'Svi predmeti')
+@section('title', 'Detalji glumice/glumca')
 @section('content_header')
-<h1>Predmeti</h1>
+<h1>Glumica/glumac</h1>
 @stop
 
 
