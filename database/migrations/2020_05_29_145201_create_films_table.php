@@ -44,16 +44,16 @@ class CreateFilmsTable extends Migration
             $table->smallIncrements('film_id');
             $table->string('title',128)->index();
             $table->text('description')->nullable();
-            $table->year('release_year')->nullable();
+            $table->year('release_year');
             $table->tinyInteger('language_id')->index()->unsigned();
-            $table->tinyInteger('original_language_id')->index()->nullable()->unsigned()->default=NULL;
+            $table->tinyInteger('original_language_id')->index()->nullable()->unsigned();
             $table->tinyInteger('rental_duration')->unsigned();
             $table->decimal('rental_rate', 4, 2)->default('4.99');
-            $table->smallInteger('lenght')->unsigned()->nullable();
+            $table->smallInteger('length')->unsigned()->nullable();
             $table->decimal('replacement_cost', 5, 2)->default('19.99');
             // rating` ENUM('G','PG','PG-13','R','NC-17') NULL DEFAULT 'G'
-            $table->enum('rating', ['G','PG','PG-13','R','NC-17'])->nullable()->default('G');
-            $table->set('special_features',['Trailers','Commentaries','Deleted Scenes','Behind the Scenes'])->nullable();
+            $table->enum('rating', ['G','PG','PG-13','R','NC-17'])->nullable()->default('G')->collation('utf8mb4_general_ci');
+            $table->set('special_features',['Trailers','Commentaries','Deleted Scenes','Behind the Scenes'])->nullable()->collation('utf8mb4_general_ci');
             $table->timestamp('last_update')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
             $table->timestamps();
         });
