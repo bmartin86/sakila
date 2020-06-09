@@ -14,7 +14,7 @@ class LanguageController extends Controller
      */
     public function index()
     {
-        $jezici = Language::all();
+        $jezici = Language::all()->reverse();
         return view('languages.index', compact('jezici'));
     }
 

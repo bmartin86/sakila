@@ -32,7 +32,7 @@
 
 
 
-<ol> 
+<ol reversed> 
     @foreach ($jezici as $jez)
 
 
@@ -43,7 +43,7 @@
         <form style="display:inline" name="language_delete" action="{{url("/languages/{$jez->language_id}")}}" method="POST" enctype="multipart/form-data">
             @method('delete')
             @csrf
-            <button type="submit" class="btn btn-danger">
+            <button type="submit" style="color: blue">
                 <i class="fa fa-trash" aria-hidden="true"></i>
             </button>
         </form>  
@@ -55,7 +55,7 @@
 </ol>
 
 &nbsp;&nbsp;<a href='{{route('languages.create')}}'>
-    <span class="label label-info">Dodaj novi jezik</span></a>
+    <i class="fas fa-plus"></i> Dodaj novi jezik</a>
 @endsection
 
 @section('css')

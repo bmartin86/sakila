@@ -35,18 +35,18 @@
 --}}
 
 {{ $glumci->links() }}
-<ol start="{{ $glumci->firstItem() }}"> 
+<ol start="{{ $glumci->firstItem() }}" > 
     @foreach ($glumci as $g)
 
 
     <li>
         <a href='{{url("/actors/{$g->actor_id}/edit")}}'>
-            <span class="label label-info">Edit</span></a>
+            <i class="fas fa-edit"></i></a>
    
         <form style="display:inline" name="actor_delete" action="{{url("/actors/{$g->actor_id}")}}" method="POST" enctype="multipart/form-data">
             @method('delete')
             @csrf
-            <button type="submit" class="btn btn-danger">
+            <button type="submit" style="color: blue">
                 <i class="fa fa-trash" aria-hidden="true"></i>
             </button>
         </form>  
@@ -58,7 +58,7 @@
 </ol>
 {{ $glumci->links() }}
 <a href='{{route('actors.create')}}'>
-    <span class="label label-info">Dodaj novu glumicu/glumca</span></a>
+    <i class="fas fa-plus"></i> Dodaj novu glumicu/glumca</a>
 @endsection
 
 @section('css')
