@@ -72,23 +72,32 @@
         
         <label for="rental_duration"> Duljina najma:</label
         ><br>
-        <input maxlength="3" type="number" name="rental_duration" required="true"
+        <input maxlength="3" type="number" min=0 name="rental_duration" required="true"
                value="">
         <br>
         
-        <label for="rental_rate"> Opis:</label>
+        <label for="rental_rate"> Cijena najma:</label>
         <br>
-        <input maxlength="3" type="number" name="rental_rate" required="false"
-               value="">
+        <input maxlength="4" type="number" name="rental_rate" required="true" min="0" max="999" step="0.01" 
+               value="4.99">
         <br>
         
+        <label for="length"> Duljina filma:</label>
+        <br>
+        <input maxlength="5" type="number" min=0 name="length" required="false"
+               value="0">
+        <br>
         
+        <label for="replacement_cost"> Trošak oštećenja ili gubitka filma:</label>
+        <br>
+        <input maxlength="5" type="number" name="replacement_cost" required="true" min="0" max="9999" step="0.01" 
+               value="19.99">
+        <br>
+        
+
         /*
         
-	`rental_duration` TINYINT(3) UNSIGNED NOT NULL,
-	`rental_rate` DECIMAL(4,2) NOT NULL DEFAULT 4.99,
-	`length` SMALLINT(5) UNSIGNED NULL DEFAULT NULL,
-	`replacement_cost` DECIMAL(5,2) NOT NULL DEFAULT 19.99,
+	
 	`rating` ENUM('G','PG','PG-13','R','NC-17') NULL DEFAULT 'G' COLLATE 'utf8mb4_general_ci',
 	`special_features` SET('Trailers','Commentaries','Deleted Scenes','Behind the Scenes') NULL DEFAULT NULL COLLATE 'utf8mb4_general_ci',
 	`last_update` TIMESTAMP NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
