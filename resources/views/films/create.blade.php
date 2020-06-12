@@ -93,8 +93,18 @@
         <input maxlength="5" type="number" name="replacement_cost" required="true" min="0" max="9999" step="0.01" 
                value="19.99">
         <br>
-        
+        <br>
 
+        <label for="rating"> Kategorija:</label>
+        &nbsp;
+        <select name="rating">
+            <option value="G">G</option>
+            <option value="">PG</option>
+            <option value="">PG-13</option>
+            <option value="">R</option>
+            <option value="">NC-17</option>
+        </select>
+        <br>
         /*
         
 	
