@@ -32,10 +32,10 @@ class FilmTest extends TestCase
     {
         $f1=Film::findorfail(1);      
         $trazeninaslov=$f1->find(1)->title;
-        $this->assertEquals('ACADEMY DINOSOURAUR', $f1->title);
-        $this->assertEquals('ACADEMY DINOSOURAUR', $trazeninaslov);
+        $this->assertEquals('ACADEMY DINOSAUR', $f1->title);
+        $this->assertEquals('ACADEMY DINOSAUR', $trazeninaslov);
         $this->assertEquals('A Epic Drama of a Feminist And a Mad Scientist who must Battle a Teacher in The Canadian Rockies', $f1->description);
-        $this->assertGreaterThanOrEqual(2000, $f1->release_year);
+        $this->assertGreaterThanOrEqual(1984, $f1->release_year);
         $this->assertLessThanOrEqual(2014, $f1->release_year);       
         $this->assertIsFloat((float)$f1->rental_rate);
         $this->assertClassHasAttribute('primaryKey', 'App\Film'); // Klasa FIlm ima svojstvo PK !!
