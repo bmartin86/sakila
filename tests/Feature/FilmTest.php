@@ -12,7 +12,7 @@ class FilmTest extends TestCase {
  public function testFilmDodajNovi() {
         $response = $this->get('/films/create');
         $response->assertStatus(200)
-                ->assertSee('Dodaj novi zapis');    
+                ->assertSee('Dodaj novi film');    
  }
     
     public function testFilmIndex() {
