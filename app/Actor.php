@@ -16,4 +16,8 @@ class Actor extends Model
        // return ucfirst($value);  // ovo ne radi!
     }
     
+        public function films()
+    {
+        return $this->belongsToMany('App\Film','film_actor','actor_id','film_id');   
+    }
 }
