@@ -17,7 +17,7 @@ class Language extends Model
                               //poveznica s modelom, kljuc od stranog modela, moj kljuc, 
         return $this->hasMany('App\Film','original_language_id','language_id' );
     }
-       
+
     /**
      * Dohvati sve filmove ciji je PRIJEVOD jezika kao iz ovog modela
      * npr, ako je model jezika madjarski dobivamo sve filmove koji su prevedeni na madjarski

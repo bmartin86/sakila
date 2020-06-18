@@ -11,8 +11,15 @@
 </div>
 @endif 
 
-<h3>Detalji jezika {{$jez->name}}:</h3>
+<h4>Detalji jezika {{$jez->name}}:</h4>
 
+<h5>Broj filmova ciji je originalni jezik {{$jez->name}}: 
+    <a href="/films/lang/{{$jez->language_id}}"> <span class="badge badge-secondary">
+            {{$jez->films()->count()}} </span> list ></a></h5>
+
+<h5>Broj filmova koji je preveden na {{$jez->name}}: 
+    <a href="/films/langtrans/{{$jez->language_id}}"><span class="badge badge-secondary"> 
+            {{$jez->films_prevedeni()->count()}} </span> list ></a></h5>
 
 
 <div class="border border-info rounded-md">

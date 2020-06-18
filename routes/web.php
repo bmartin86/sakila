@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::resource('films', 'FilmsController');
+Route::get('/films/lang/{lang}', "FilmsController@listbyoriglang");
+Route::get('/films/langtrans/{lang}', "FilmsController@listbytranslang");
 Route::resource('languages', 'LanguageController');
 Route::resource('actors', 'ActorsController');
 Route::get('/glumci',"ActorsController@index");
