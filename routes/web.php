@@ -21,4 +21,4 @@ Route::get('/glumci',"ActorsController@index");
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name("home");

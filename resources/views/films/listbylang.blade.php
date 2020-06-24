@@ -24,7 +24,7 @@
 <a href='{{route('films.create')}}'>
     <i class="fas fa-plus"></i> <span class="label label-info">Dodaj novi zapis</span></a>
 
-<h3>Lista filmova ({{$filmovi->total()}}):</h3>
+<h3>{{$subtitle}} {{$lang->name}} ({{$filmovi->total()}}):</h3>
 
 {{ $filmovi->links() }}
 <ol start="{{ $filmovi->firstItem() }}" > 

@@ -26,18 +26,20 @@
         Prijevod filma:         <a href="/languages/{{$film->language_id}}" class="alert-link">
             {{$film->lang_trans()->first()->name}}</a>
     </div>
-    Duljina najma: {{$film->rental_duration}}<br>
-    Cijena najma po danu: €{{$film->rental_rate}}<br>
-    Ukupna cijena: €{{$film->rental_rate*$film->rental_duration}}<br>
-    </p>
-    <p class="alert alert-success" role="alert">
+    <div class="alert-success">
+        Duljina najma: {{$film->rental_duration}} dan(a)<br>
+        Cijena najma po danu: €{{$film->rental_rate}}<br>
+        Ukupna cijena: €{{$film->rental_rate*$film->rental_duration}}<br>
+    </div>
+</p>
+<p class="alert alert-success" role="alert">
     Ukupno glumaca: {{$film->actors()->count()}}
-    </p>
-    @foreach ($film->actors()->get() as $g)
-    <p style="text-indent: 50px;">
-        <i class="far fa-user big"></i><a href='{{url("/actors/{$g->actor_id}")}}'> {{$g->first_name }} {{$g->last_name }}</a>
-    </p> 
-    @endforeach
+</p>
+@foreach ($film->actors()->get() as $g)
+<p style="text-indent: 50px;">
+    <i class="far fa-user big"></i><a href='{{url("/actors/{$g->actor_id}")}}'> {{$g->first_name }} {{$g->last_name }}</a>
+</p> 
+@endforeach
 </div>
 <a href='{{route("films.index")}}'>
     <i class="fas fa-angle-double-left"></i> Natrag na listu filmova</a>

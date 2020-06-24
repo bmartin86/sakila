@@ -33,7 +33,8 @@ class FilmsController extends Controller
        //dd($lang);
         $filmovi=$lang->films()->paginate(15);
        //dd($filmovi);
-        return view('films.listbylang', compact('filmovi'));
+        $subtitle = "Lista filmova na original jeziku ";
+        return view('films.listbylang', compact('filmovi','lang','subtitle'));
     }
      /**
      * prikazi filmove prevedene na neki jezik
@@ -42,7 +43,8 @@ class FilmsController extends Controller
         public function listbytranslang(Language $lang)
     {
         $filmovi=$lang->films_prevedeni()->paginate(15);
-        return view('films.listbylang', compact('filmovi'));
+        $subtitle = "Lista filmova prevedenih na jezik ";
+        return view('films.listbylang', compact('filmovi','lang','subtitle'));
     }
 
     /**
