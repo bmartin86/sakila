@@ -16,6 +16,10 @@
 
 <div class="border border-info rounded-md">
     <h2><span class="alert-success">{{$film->title}} ({{$film->release_year}})</span></h2><br>
+    <h3> {{$film->zanr()->first()->name}}  </h3>
+    <a href="/zanrovi/{{$film->zanr()->first()->category_id}}" class="alert-link">
+        (svi filmovi zanra {{$film->zanr()->first()->name}})</a><br>
+
     <p class="alert-success">Opis:<br>"{{$film->description}}"</p>
     <p>
     <div class="alert alert-success" role="alert">

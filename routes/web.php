@@ -18,6 +18,7 @@ Route::get('/films/langtrans/{lang}', "FilmsController@listbytranslang");
 Route::resource('languages', 'LanguageController');
 Route::resource('actors', 'ActorsController');
 Route::get('/glumci',"ActorsController@index");
+Route::resource('zanrovi', 'CategoryController');
 
 Route::get('/', function () {
     return view('welcome');

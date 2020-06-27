@@ -88,6 +88,8 @@
                 <div class="links">
                     <a href='{{url("/films")}}'>Filmovi</a>
                     <a href='{{route('actors.index')}}'>Glumci</a>
+                    <a href="{{url("/zanrovi")}}">Žanrovi</a>
+                    <a href="{{url("/languages")}}">Jezici</a>
                     <a href="https://travis-ci.org/github/bmartin86/sakila">Travis CI</a>
                     <a href="https://vapor.laravel.com">Heroku</a>
                     <a href="https://github.com/bmartin86/sakila">GitHub - Sakila</a>

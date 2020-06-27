@@ -8,22 +8,22 @@
 @section('content')
 
 @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
+<div class="alert alert-danger">
+    <ul>
+        @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
 @endif
 @error('message')
-    <div class="alert alert-success">{{ $message }}</div>
+<div class="alert alert-success">{{ $message }}</div>
 @enderror
 
 @if (session('status'))
-    <div class="alert alert-success">
-        {{ session('status') }}
-    </div>
+<div class="alert alert-success">
+    {{ session('status') }}
+</div>
 @endif
 
 <h3>Dodaj novi film:</h3>
@@ -42,14 +42,14 @@
         <textarea name="description" rows="4" cols="20" required="false" value="">
         </textarea>
         <br>
-        
+
         <label for="release_year"> Godina:</label>
         <br>
         <input min="1950" max="2020" type="number" name="release_year" required="true"
                value="">
         <br>
         <br>
-         
+
         <label for="language_id"> Jezik prijevoda:</label>
         &nbsp;
         <select name="language_id" required="true">
@@ -59,7 +59,7 @@
             @endforeach
         </select>
         &nbsp;
-        
+
         <label for="original_language_id"> Jezik originala:</label>
         &nbsp;
         <select name="original_language_id">
@@ -69,25 +69,25 @@
             @endforeach
         </select>
         <br>
-        
+
         <label for="rental_duration"> Duljina najma:</label
         ><br>
         <input maxlength="3" type="number" min=0 name="rental_duration" required="true"
                value="">
         <br>
-        
+
         <label for="rental_rate"> Cijena najma:</label>
         <br>
         <input maxlength="4" type="number" name="rental_rate" required="true" min="0" max="999" step="0.01" 
                value="4.99">
         <br>
-        
+
         <label for="length"> Duljina filma:</label>
         <br>
         <input maxlength="5" type="number" min=0 name="length" required="false"
                value="0">
         <br>
-        
+
         <label for="replacement_cost"> Trošak oštećenja ili gubitka filma:</label>
         <br>
         <input maxlength="5" type="number" name="replacement_cost" required="true" min="0" max="9999" step="0.01" 
@@ -95,42 +95,35 @@
         <br>
         <br>
 
-        <label for="rating"> Kategorija:</label>
-        &nbsp;
-        <select name="rating">
-            <option value="G">G</option>
-            <option value="">PG</option>
-            <option value="">PG-13</option>
-            <option value="">R</option>
-            <option value="">NC-17</option>
-        </select>
-        <br>
-        /*
-        
-	
-	`rating` ENUM('G','PG','PG-13','R','NC-17') NULL DEFAULT 'G' COLLATE 'utf8mb4_general_ci',
-	`special_features` SET('Trailers','Commentaries','Deleted Scenes','Behind the Scenes') NULL DEFAULT NULL COLLATE 'utf8mb4_general_ci',
-	`last_update` TIMESTAMP NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-	`created_at` TIMESTAMP NULL DEFAULT NULL,
-	`updated_at` TIMESTAMP NULL DEFAULT NULL
-)
-        
-        */
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        <!-- rating radio button  'G','PG','PG-13','R','NC-17' -->
+
+        <p>Odaberite kategoriju:</p>
+        <input type="radio" id="rating_G" name="rating" value="G">
+        <label for="rating_G">G</label><br>
+        <input type="radio" id="rating_PG" name="rating" value="PG">
+        <label for="rating_PG">PG</label><br>  
+        <input type="radio" id="rating_PG13" name="rating" value="PG-13">
+        <label for="rating_PG13">PG-13</label><br>
+        <input type="radio" id="rating_R" name="rating" value="R">
+        <label for="rating_R">R</label><br>
+        <input type="radio" id="rating_NC17" name="rating" value="NC-17">
+        <label for="rating_NC17">NC-17</label><br> <br>
+
+
+        <!-- special_features CHECKBOX 'Trailers','Commentaries','Deleted Scenes','Behind the Scenes' -->
+        <p>Odaberite dodatke:</p>
+        <input type="checkbox" id="Trailers" name="special_features[]" value="Trailers">
+        <label for="Trailers"> Trailers</label><br>
+        <input type="checkbox" id="Commentaries" name="special_features[]" value="Commentaries">
+        <label for="Commentaries"> Commentaries</label><br>
+        <input type="checkbox" id="DeletedScenes" name="special_features[]" value="Deleted Scenes">
+        <label for="DeletedScenes"> Deleted Scenes</label><br>  
+        <input type="checkbox" id="BehindtheScenes" name="special_features[]" value="Behind the Scenes">
+        <label for="BehindtheScenes">Behind the Scenes</label><br>
+
     </div>
     <div class="form-group">
-        <input type="submit" name="actor_sbm" value="Dodaj glumca/glumicu">
+        <input type="submit" name="dodaj_film_sbm" value="Dodaj novi film">
     </div>
 </form>
 

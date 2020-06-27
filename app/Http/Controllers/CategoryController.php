@@ -5,16 +5,16 @@ namespace App\Http\Controllers;
 use App\Category;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
-{
+class CategoryController extends Controller {
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+    public function index() {
+        $zanrovi = Category::all();
+        return view('zanrovi.index', compact('zanrovi'));
     }
 
     /**
@@ -22,8 +22,7 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
+    public function create() {
         //
     }
 
@@ -33,8 +32,7 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request) {
         //
     }
 
@@ -44,9 +42,21 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
-    {
-        //
+
+    /**
+     * Display the specified resource.
+     * GET|HEAD  | zanrovi/{zanrovi}      | zanrovi.show    | App\Http\Controllers\CategoryController@show
+     * 
+     * @param  \App\Category  $zanrovi
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Category $zanrovi) { // saljem varijablu zanrovi
+        $lista_filmova_odabranog_zanra = $zanrovi->filmovi()->get();
+
+        // Ovo dolje je primjer direktnog poziva, --radi bez problema 
+        //  $c2=Category::find(6);
+        //  $lista_filmova_odabranog_zanra=$c2->filmovi()->take(2)->get();
+        return view('zanrovi.show', compact('lista_filmova_odabranog_zanra'));
     }
 
     /**
@@ -55,8 +65,7 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
-    {
+    public function edit(Category $category) {
         //
     }
 
@@ -67,8 +76,7 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
-    {
+    public function update(Request $request, Category $category) {
         //
     }
 
@@ -78,8 +86,8 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
-    {
+    public function destroy(Category $category) {
         //
     }
+
 }
